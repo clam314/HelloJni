@@ -1,7 +1,7 @@
 #include <jni.h>
 #include <string>
 
-extern "C"{
+extern "C" {
 #include "libavcodec/avcodec.h"
 }
 

@@ -74,12 +74,6 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     message(STATUS "optional:-std=c++11")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
-# Searches for a specified prebuilt library and stores the path as a
-# variable. Because system libraries are included in the search path by
-# default, you only need to specify the name of the public NDK library
-# you want to add. CMake verifies that the library exists before
-# completing its build.
-
 find_library( # Sets the name of the path variable.
               log-lib
 
@@ -87,25 +81,19 @@ find_library( # Sets the name of the path variable.
               # you want CMake to locate.
               log )
 
-add_library( # Sets the name of the library.
-             native-lib
-
-             # Sets the library as a shared library.
+add_library( native-lib
              SHARED
-
-             # Provides a relative path to your source file(s).
-             # Associated headers in the same location as their source
-             # file are automatically included.
              src/main/cpp/native-lib.cpp )
 
-include_directories(src/main/jniLibs/include)
-# Specifies libraries CMake should link to your target library. You
-# can link multiple libraries, such as libraries you define in the
-# build script, prebuilt third-party libraries, or system libraries.
 
-target_link_libraries( # Specifies the target library.
-                       native-lib avcodec-57 avfilter-6 avformat-57 avutil-55 swresample-2 swscale-4 avdevice-57
+add_library( ffmpeg-hello
+             SHARED
+             src/main/cpp/ffmpeg-hello.cpp )
 
-                       # Links the target library to the log library
-                       # included in the NDK.
+include_directories(src/main/jniLibs/include/)
+
+target_link_libraries( native-lib avcodec-57 avfilter-6 avformat-57 avutil-55 swresample-2 swscale-4 avdevice-57
+                       ${log-lib} )
+
+target_link_libraries( ffmpeg-hello avcodec-57 avfilter-6 avformat-57 avutil-55 swresample-2 swscale-4 avdevice-57
                        ${log-lib} )
