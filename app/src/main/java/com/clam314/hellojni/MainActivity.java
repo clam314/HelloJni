@@ -12,8 +12,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    // Example of a call to a native method
-    findViewById(R.id.bt_ffmpeg_hello).setOnClickListener(this);
+        findViewById(R.id.bt_ffmpeg_hello).setOnClickListener(this);
+        findViewById(R.id.bt_hello_jni).setOnClickListener(this);
     }
 
     @Override
@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.bt_ffmpeg_hello:
                 startActivity(new Intent(this,FFmpegHelloActivity.class));
+                break;
+            case R.id.bt_hello_jni:
+                startActivity(new Intent(this,HelloJniActivity.class));
                 break;
         }
     }

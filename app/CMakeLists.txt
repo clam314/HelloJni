@@ -90,6 +90,10 @@ add_library( ffmpeg-hello
              SHARED
              src/main/cpp/ffmpeg-hello.cpp )
 
+add_library( hello-jni
+             SHARED
+             src/main/cpp/hello-jni.cpp )
+
 include_directories(src/main/jniLibs/include/)
 
 target_link_libraries( native-lib avcodec-57 avfilter-6 avformat-57 avutil-55 swresample-2 swscale-4 avdevice-57
@@ -97,3 +101,5 @@ target_link_libraries( native-lib avcodec-57 avfilter-6 avformat-57 avutil-55 sw
 
 target_link_libraries( ffmpeg-hello avcodec-57 avfilter-6 avformat-57 avutil-55 swresample-2 swscale-4 avdevice-57
                        ${log-lib} )
+
+target_link_libraries( hello-jni ${log-lib} )

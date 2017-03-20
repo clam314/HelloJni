@@ -18,4 +18,10 @@
         android:layout_height="40dp"
         android:layout_margin="10dp"
         android:text="FFmpegHello"/>
+    <Button
+        android:id="@+id/bt_hello_jni"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:text="hellojni"/>
 </LinearLayout>
